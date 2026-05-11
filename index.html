@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Cercle Nuances — Traiteur événementiel & Chef à domicile à Montréal. Mariages, événements corporatifs, célébrations privées."/>
+  <title>Cercle Nuances — L'art de recevoir</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/styles.css"/>
+
+  <!-- Favicon (logo) -->
+  <link rel="icon" type="image/png" href="img/logo.png"/>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════
+     NAVIGATION PRINCIPALE
+═══════════════════════════════════════════════════ -->
+<nav id="navbar">
+  <a class="nav-logo" onclick="showPage('accueil')" aria-label="Retour à l'accueil">
+    <img src="img/logo.png" alt="Cercle Nuances"/>
+  </a>
+
+  <!-- Menu desktop -->
+  <ul class="nav-links">
+    <li><a onclick="showPage('accueil')" id="nl-accueil" class="active">Accueil</a></li>
+    <li><a onclick="showPage('corpo')"   id="nl-corpo">Événements</a></li>
+    <li><a onclick="showPage('event')"   id="nl-event">Privé</a></li>
+    <li><a onclick="showPage('mariage')" id="nl-mariage">Mariage</a></li>
+    <li><a onclick="showPage('martin')"  id="nl-martin">Maison Martin</a></li>
+    <li><a onclick="showPage('menus')"   id="nl-menus">Menus</a></li>
+  </ul>
+
+  <!-- Bouton CTA desktop -->
+  <button class="nav-cta" onclick="goToContact()">Soumission</button>
+
+  <!-- Hamburger mobile -->
+  <button class="nav-burger" id="nav-burger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- Menu mobile overlay -->
+<div class="nav-mobile" id="nav-mobile">
+  <a onclick="showPage('accueil')" id="mnl-accueil" class="active">Accueil</a>
+  <a onclick="showPage('corpo')"   id="mnl-corpo">Événements</a>
+  <a onclick="showPage('event')"   id="mnl-event">Privé</a>
+  <a onclick="showPage('mariage')" id="mnl-mariage">Mariage</a>
+  <a onclick="showPage('martin')"  id="mnl-martin">Maison Martin</a>
+  <a onclick="showPage('menus')"   id="mnl-menus">Menus</a>
+  <button class="nav-cta" onclick="goToContact()">Soumission</button>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════
+     PAGE : ACCUEIL
+═══════════════════════════════════════════════════ -->
+<div class="page active" id="page-accueil">
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-line"></div>
+    <div class="hero-content">
+      <div class="hero-name-type">Cercle Nuances</div>
+      <span class="hero-eyebrow">Traiteur événementiel · Chef à domicile · Montréal</span>
+      <h1 class="hero-title">L'art de<br/><em>recevoir</em></h1>
+      <p class="hero-subtitle">Une cuisine de sens, de goût et de nuances</p>
+      <div class="hero-cta">
+        <button class="btn-or" onclick="document.getElementById('offres').scrollIntoView({behavior:'smooth'})">Nos offres</button>
+        <button class="btn-vert" onclick="goToContact()">Demander une soumission</button>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <span>Découvrir</span>
+      <div class="scroll-dot"></div>
+    </div>
+  </section>
+
+  <!-- CHIFFRES CLÉS -->
+  <!-- Les statistiques sont injectées depuis js/content.js → SITE.stats -->
+  <div id="strip"></div>
+
+  <!-- NOS OFFRES -->
+  <section id="offres">
+    <div class="offres-header">
+      <span class="label">Nos offres</span>
+      <h2 class="titre" style="font-size:clamp(2rem,4vw,3rem)">Une expérience<br/><em>pensée pour vous</em></h2>
+      <div class="divider-c"></div>
+      <p>Événements d'entreprise, célébrations privées ou mariage, chaque projet est orchestré dans les moindres détails.</p>
+    </div>
+    <div class="offres-grid">
+
+      <div class="offre-card anim-item" onclick="showPage('corpo')">
+        <div class="offre-photo" style="background-image:url('img/corpo-buffet.png')"></div>
+        <div class="offre-overlay"></div>
+        <div class="offre-content">
+          <span class="offre-num">01</span>
+          <div class="offre-line"></div>
+          <h3 class="offre-titre">Offre<br/><em>Corporative</em></h3>
+          <p class="offre-desc">Cocktails dînatoires, galas, lancements. Une image soignée pour vos événements professionnels.</p>
+          <div class="offre-tags"><span class="tag">Cocktail</span><span class="tag">Gala</span><span class="tag">Lancement</span></div>
+          <span class="offre-lien">Découvrir l'offre</span>
+        </div>
+      </div>
+
+      <div class="offre-card anim-item" onclick="showPage('event')">
+        <div class="offre-photo" style="background-image:url('img/offre-evenement.jpg')"></div>
+        <div class="offre-overlay"></div>
+        <div class="offre-content">
+          <span class="offre-num">02</span>
+          <div class="offre-line"></div>
+          <h3 class="offre-titre">Offre<br/><em>Événement</em></h3>
+          <p class="offre-desc">Anniversaires, fêtes privées, chef à domicile. Une table généreuse dans l'intimité de votre espace.</p>
+          <div class="offre-tags"><span class="tag">Anniversaire</span><span class="tag">Chef à domicile</span></div>
+          <span class="offre-lien">Découvrir l'offre</span>
+        </div>
+      </div>
+
+      <div class="offre-card anim-item" onclick="showPage('mariage')">
+        <div class="offre-photo" style="background-image:url('img/offre-mariage.png')"></div>
+        <div class="offre-overlay"></div>
+        <div class="offre-content">
+          <span class="offre-num">03</span>
+          <div class="offre-line"></div>
+          <h3 class="offre-titre">Offre<br/><em>Mariage</em></h3>
+          <p class="offre-desc">Menus sur mesure, service raffiné, accompagnement pour sublimer votre plus beau jour.</p>
+          <div class="offre-tags"><span class="tag">Sur mesure</span><span class="tag">Dégustation</span></div>
+          <span class="offre-lien">Découvrir l'offre</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- GALERIE -->
+  <section id="galerie-teaser">
+    <div class="gal-header">
+      <span class="label">Nos créations</span>
+      <h2 class="titre" style="font-size:clamp(1.8rem,3.5vw,2.8rem)">Chaque bouchée<br/><em>raconte une histoire</em></h2>
+      <div class="divider-c"></div>
+      <p>Un aperçu de notre univers culinaire — présentations, dressages et créations du quotidien.</p>
+    </div>
+    <!-- Images injectées depuis js/content.js → SITE.galerie -->
+    <div class="gal-grid" id="galerie-grid"></div>
+  </section>
+
+  <!-- INSTAGRAM -->
+  <section id="instagram">
+    <div class="insta-header">
+      <span class="label">Sur Instagram</span>
+      <h2 class="titre" style="font-size:clamp(1.8rem,3vw,2.6rem)">Suivez<br/><em>nos coulisses</em></h2>
+      <div class="divider-c"></div>
+      <p>Plongez dans notre univers : préparations, dressages et moments de service.</p>
+      <!-- Le lien Instagram est injecté depuis content.js → SITE.liens.instagram -->
+      <a class="insta-handle" href="https://www.instagram.com/cercle_nuances/" target="_blank" data-instagram>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        <span class="handle-text">@cercle_nuances</span>
+      </a>
+    </div>
+    <!-- Reels injectés depuis js/content.js → SITE.reels -->
+    <div class="reels-grid" id="reels-grid"></div>
+  </section>
+
+  <!-- TÉMOIGNAGE -->
+  <section id="temoignage">
+    <span class="temo-quote">"</span>
+    <!-- Texte injecté depuis content.js → SITE.temoignage -->
+    <blockquote id="temoignage-texte"></blockquote>
+    <div class="divider-c" style="background:rgba(201,164,98,.28)"></div>
+    <cite id="temoignage-auteur"></cite>
+  </section>
+
+  <!-- MAISON MARTIN TEASER -->
+  <section id="mm-teaser">
+    <div class="mm-teaser-bg"></div>
+    <div class="mm-teaser-overlay"></div>
+    <div class="mm-teaser-content">
+      <span class="label" style="color:var(--or)">Espace événementiel · Montréal</span>
+      <h2>Maison<br/><em>Martin</em></h2>
+      <div class="divider" style="margin:1rem 0 1.4rem"></div>
+      <p>Un espace élégant, cozy et entièrement modulable au cœur de Montréal, pour vos événements privés, corporatifs, mariages intimistes et lancements. Combiné à l'expertise de Cercle Nuances, une expérience clé en main de l'espace à l'assiette.</p>
+      <button class="btn-or" onclick="showPage('martin')">
+        Découvrir Maison Martin
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </button>
+    </div>
+    <div class="mm-teaser-photos">
+      <div class="mm-teaser-photo" style="background-image:url('img/mm-02.jpg')"></div>
+      <div class="mm-teaser-photo" style="background-image:url('img/mm-03.jpg')"></div>
+    </div>
+  </section>
+
+  <!-- CONTACT / SOUMISSION -->
+  <section id="contact-moderne">
+    <div class="contact-top">
+      <span class="label">Votre projet</span>
+      <h2>Parlons de votre<br/><em>prochain événement</em></h2>
+      <div class="divider-c"></div>
+      <p>Dites-nous ce que vous préparez, nous vous revenons sous 24h avec une proposition sur mesure.</p>
+      <div style="margin-top:1.8rem">
+        <!-- Lien Calendly (modifiable dans content.js) -->
+        <a class="btn-or" href="https://calendly.com/cerclenuances-info/30min" target="_blank" data-calendly style="display:inline-flex;align-items:center;gap:.6rem;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          Planifier un échange personnalisé
+        </a>
+      </div>
+    </div>
+
+    <!-- Sélecteur de type d'événement -->
+    <div class="type-selector" id="type-selector">
+      <div class="type-card" onclick="selectType(this,'corpo')" data-contact-type="corpo">
+        <span class="type-num">01</span>
+        <div class="type-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg>
+        </div>
+        <span class="type-nom">Corporatif</span>
+        <span class="type-sous">Gala · Cocktail · Lancement</span>
+      </div>
+      <div class="type-card" onclick="selectType(this,'event')" data-contact-type="event">
+        <span class="type-num">02</span>
+        <div class="type-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V6a2 2 0 012-2z"/></svg>
+        </div>
+        <span class="type-nom">Événement privé</span>
+        <span class="type-sous">Anniversaire · Chef à domicile</span>
+      </div>
+      <div class="type-card" onclick="selectType(this,'mariage')" data-contact-type="mariage">
+        <span class="type-num">03</span>
+        <div class="type-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+        </div>
+        <span class="type-nom">Mariage</span>
+        <span class="type-sous">Menu sur mesure · Dégustation</span>
+      </div>
+    </div>
+
+    <!-- Formulaire -->
+    <div class="contact-form-wrap">
+      <div class="contact-form-inner" id="contact-form-inner">
+        <div class="cf-title" id="cf-title">Parlez-nous de votre projet</div>
+
+        <!-- Message succès -->
+        <div class="cf-success" id="cf-success">
+          <div class="cf-success-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          </div>
+          <h3>Message envoyé !</h3>
+          <p>Merci pour votre intérêt. Notre équipe vous contactera dans les 24 heures pour discuter de votre projet.</p>
+        </div>
+
+        <form id="cf-form" onsubmit="submitCF(event)">
+          <div class="cf-grid-2">
+            <div class="cf-field"><label>Prénom</label><input type="text" placeholder="Marie" required/></div>
+            <div class="cf-field"><label>Nom</label><input type="text" placeholder="Dupont" required/></div>
+          </div>
+          <div class="cf-grid-2">
+            <div class="cf-field"><label>Courriel</label><input type="email" placeholder="marie@email.com" required/></div>
+            <div class="cf-field"><label>Téléphone</label><input type="tel" placeholder="+1 514 000-0000"/></div>
+          </div>
+          <div class="cf-grid-2">
+            <div class="cf-field"><label>Date de l'événement</label><input type="date" required/></div>
+            <div class="cf-field"><label>Nombre de convives</label><input type="number" placeholder="50" min="1" required/></div>
+          </div>
+          <!-- Champ spécifique au type (injecté par app.js selon le choix) -->
+          <div class="cf-full" id="cf-extra"></div>
+          <div class="cf-full">
+            <div class="cf-field">
+              <label>Votre message (optionnel)</label>
+              <textarea placeholder="Décrivez votre vision, vos envies ou toute contrainte particulière…"></textarea>
+            </div>
+          </div>
+          <div class="cf-footer">
+            <span class="cf-privacy">Vos informations sont confidentielles et ne seront utilisées qu'à des fins de contact.</span>
+            <button type="submit" class="btn-vert">Envoyer la demande &nbsp;→</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</div><!-- /page-accueil -->
+
+
+<!-- ═══════════════════════════════════════════════════
+     PAGE : ÉVÉNEMENTS CORPORATIFS
+═══════════════════════════════════════════════════ -->
+<div class="page" id="page-corpo">
+
+  <div class="page-hero">
+    <div class="page-hero-bg" style="background-image:url('img/corpo-buffet.png')"></div>
+    <div class="page-hero-content">
+      <h1>Événements<br/><em>Corporatifs</em></h1>
+      <div class="divider"></div>
+      <p>Des expériences gastronomiques à la hauteur de votre image de marque.</p>
+    </div>
+  </div>
+
+  <div class="intro-2col">
+    <div class="intro-photo-col" style="background-image:url('img/corpo-intro.png')"></div>
+    <div class="intro-text-col">
+      <span class="label">Notre approche</span>
+      <h2 class="titre" style="font-size:clamp(1.8rem,3vw,2.5rem)">Une gastronomie au service<br/>de <em>votre image</em></h2>
+      <div class="divider"></div>
+      <p>Cercle Nuances conçoit des expériences culinaires pensées pour les entreprises qui souhaitent marquer les esprits. Du cocktail dînatoire au gala annuel, chaque prestation est orchestrée avec rigueur et élégance.</p>
+      <p>Nous gérons la conception des menus, la logistique, le service et les finitions esthétiques — vous n'avez qu'à recevoir.</p>
+      <div class="btn-wrap">
+        <a class="btn-vert" href="menus/Menu_Ete_2026.pdf" target="_blank">↓ Télécharger notre menu</a>
+        <button class="btn-or" onclick="goToContact('corpo')">Demander une soumission</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="services-wrap">
+    <div class="services-header">
+      <span class="label">Nos prestations</span>
+      <h2 class="titre" style="font-size:clamp(1.8rem,3vw,2.7rem)">Ce que nous<br/><em>proposons</em></h2>
+      <div class="divider-c"></div>
+    </div>
+    <div class="services-grid">
+      <div class="service-item anim-item"><span class="svc-num">01</span><h3 class="svc-nom">Petit-déjeuner d'affaires</h3><p class="svc-desc">Buffets raffinés pour démarrer vos réunions et séminaires dans les meilleures conditions.</p></div>
+      <div class="service-item anim-item"><span class="svc-num">02</span><h3 class="svc-nom">Lunch d'affaires</h3><p class="svc-desc">Buffets, plateaux et boîtes à lunch conçus pour vos équipes. Des formules élégantes, pratiques et toujours gourmandes.</p></div>
+      <div class="service-item anim-item"><span class="svc-num">03</span><h3 class="svc-nom">Lancement de produit</h3><p class="svc-desc">Stations culinaires thématiques, accords mets & boissons, présentation visuelle alignée avec votre marque.</p></div>
+      <div class="service-item anim-item"><span class="svc-num">04</span><h3 class="svc-nom">Cocktail dînatoire</h3><p class="svc-desc">Bouchées gastronomiques, stations gourmandes. Idéal pour favoriser les échanges dans un cadre sophistiqué.</p></div>
+      <div class="service-item anim-item"><span class="svc-num">05</span><h3 class="svc-nom">Gala & soirée d'entreprise</h3><p class="svc-desc">Menu assis complet, service à table, coordination avec votre équipe événementielle.</p></div>
+      <div class="service-item anim-item"><span class="svc-num">06</span><h3 class="svc-nom">Formule sur mesure</h3><p class="svc-desc">Votre événement ne rentre dans aucune case ? Nous construisons votre expérience de A à Z.</p></div>
+    </div>
+  </div>
+
+  <div class="why-wrap">
+    <div class="why-inner">
+      <div>
+        <span class="label">Pourquoi Cercle Nuances</span>
+        <h2 class="titre" style="font-size:clamp(1.8rem,3vw,2.5rem)">Ce qui nous<br/><em>distingue</em></h2>
+        <div class="divider"></div>
+        <p style="font-size:.8rem;color:var(--gris);line-height:1.85">Nous ne sommes pas simplement traiteurs. Nous sommes partenaires de votre événement, de la première réunion à la dernière bouchée.</p>
+      </div>
+      <ul class="why-list">
+        <li class="why-item"><span class="why-n">01</span><div class="why-t"><strong>Conception personnalisée</strong><p>Chaque menu est créé spécifiquement pour votre événement — aucun catalogue standard.</p></div></li>
+        <li class="why-item"><span class="why-n">02</span><div class="why-t"><strong>Un seul interlocuteur</strong><p>De la soumission au service, la même équipe. Zéro friction, zéro surprise.</p></div></li>
+        <li class="why-item"><span class="why-n">03</span><div class="why-t"><strong>Esthétique soignée</strong><p>La présentation est pensée comme une extension de votre identité de marque.</p></div></li>
+        <li class="why-item"><span class="why-n">04</span><div class="why-t"><strong>Flexibilité & réactivité</strong><p>Changements de dernière minute, contraintes alimentaires — on s'adapte.</p></div></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="cta-page">
+    <span class="label" style="color:rgba(201,164,98,.7)">Votre prochain événement</span>
+    <h2>Prêt à impressionner<br/><em>vos invités ?</em></h2>
+    <p>Contactez-nous pour discuter de votre projet et obtenir une soumission sur mesure.</p>
+    <button class="btn-or" onclick="goToContact('corpo')">Demander une soumission</button>
+  </div>
+
+</div><!-- /page-corpo -->
+
+
+<!-- ═══════════════════════════════════════════════════
+     PAGE : ÉVÉNEMENTS PRIVÉS
+═══════════════════════════════════════════════════ -->
+<div class="page" id="page-event">
+
+  <div class="page-hero">
+    <div class="page-hero-bg" style="background-image:url('img/event-intro.jpg')"></div>
+    <div class="page-hero-content">
+      <h1>Événements<br/><em>Privés</em></h1>
+      <div class="divider"></div>
+      <p>Anniversaires, fêtes en famille, célébrations entre amis — des tablées généreuses orchestrées avec soin.</p>
+    </div>
+  </div>
+
+  <div class="intro-2col">
+    <div class="intro-text-col">
+      <span class="label">Notre approche</span>
+      <h2 class="titre" style="font-size:clamp(1.8rem,3vw,2.5rem)">Une table qui<br/><em>rassemble</em></h2>
+      <div class="divider"></div>
+      <p>Chaque événement mérite une attention particulière. Cercle Nuances met son savoir-faire au service de vos réceptions, dans le lieu de votre choix.</p>
+      <p>De la cuisine au service, tout est pensé pour vous offrir une expérience fluide, élégante et sans contrainte.</p>
+      <div class="btn-wrap">
+        <a class="btn-vert" href="menus/Menu_Evenements_2026.pdf" target="_blank">↓ Télécharger notre menu</a>
+        <button class="btn-or" onclick="goToContact('event')">Planifier votre événement</button>
+      </div>
+    </div>
+    <div class="intro-photo-col" style="background-image:url('img/nuance-073 copie.jpg')"></div>
+  </div>
+
+  <div class="services-wrap">
+    <div class="services-header">
+      <span class="label">Nos prestations</span>
+      <h2 class="titre" style="font-size:clamp(1.8rem,3vw,2.7rem)">Pour chaque<br/><em>célébration</em></h2>
+      <div class="divider-c"></div>
+    </div>
+    <div class="services-grid">
+      <div class="service-item anim-item"><span class="svc-num">01</span><h3 class="svc-nom">Brunch & déjeuner festif</h3><p class="svc-desc">Produits frais travaillés avec soin pour des célébrations tout en légèreté.</p></div>
+      <div class="service-item anim-item"><span class="svc-num">02</span><h3 class="svc-nom">Chef à domicile</h3><p class="svc-desc">Votre chef personnel cuisine chez vous, de l'entrée au dessert. Menu co-conçu selon vos envies.</p></div>
+      <div class="service-item anim-item"><span class="svc-num">03</span><h3 class="svc-nom">Anniversaire & célébration</h3><p class="svc-desc">Service complet à table et ambiance festive. Un moment inoubliable pour célébrer ceux que vous aimez.</p></div>
+      <div class="service-item anim-item"><span class="svc-num">04</span><h3 class="svc-nom">Réception familiale</h3><p class="svc-desc">Buffet élégant ou service assis, adapté à tous les âges.</p></div>
+      <div class="service-item anim-item"><span class="svc-num">05</span><h3 class="svc-nom">Dîner d'exception</h3><p class="svc-desc">Soirée gastronomique intime pour 4 à 20 personnes. Expérience signature Cercle Nuances.</p></div>
+      <div class="service-item anim-item"><span class="svc-num">06</span><h3 class="svc-nom">Clé en main</h3><p class="svc-desc">Menu, service, dressage — nous gérons tout pour que vous ne pensiez à rien le jour J.</p></div>
+    </div>
+  </div>
+
+  <div class="cta-page">
+    <span class="label" style="color:rgba(201,164,98,.7)">Votre célébration</span>
+    <h2>Créons ensemble<br/><em>votre moment</em></h2>
+    <p>Parlez-nous de votre projet, nous vous proposons une expérience à votre image.</p>
+    <button class="btn-or" onclick="goToContact('event')">Planifier votre événement</button>
+  </div>
+
+</div><!-- /page-event -->
+
+
+<!-- ═══════════════════════════════════════════════════
+     PAGE : MARIAGE
+═══════════════════════════════════════════════════ -->
+<div class="page" id="page-mariage">
+
+  <div class="page-hero">
+    <div class="page-hero-bg" style="background-image:url('img/mariage-biscuits.jpg')"></div>
+    <div class="page-hero-content">
+      <h1>Votre Mariage<br/><em>d'Exception</em></h1>
+      <div class="divider"></div>
+      <p>Parce que chaque histoire mérite une expérience qui se vit autant qu'elle se déguste.</p>
+    </div>
+  </div>
+
+  <div class="intro-2col">
+    <div class="intro-photo-col" style="background-image:url('img/nuance-074 copie.jpg')"></div>
+    <div class="intro-text-col">
+      <span class="label">Notre promesse</span>
+      <h2 class="titre" style="font-size:clamp(1.8rem,3vw,2.5rem)">Chaque détail<br/><em>compte</em></h2>
+      <div class="divider"></div>
+      <p>Votre mariage est unique. Votre table doit l'être aussi. Nous ne proposons pas de formule, nous créons une expérience culinaire pensée spécialement pour vous.</p>
+      <p>Choix des menus, accords des saveurs, coordination avec vos prestataires et service le jour J.</p>
+      <div class="btn-wrap">
+        <button class="btn-vert" onclick="goToContact('mariage')">Demander une soumission</button>
+        <!-- Lien Calendly (modifiable dans content.js) -->
+        <a class="btn-or" href="https://calendly.com/cerclenuances-info/30min" target="_blank" data-calendly>Planifier un échange</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="inclus-wrap">
+    <div class="services-header">
+      <span class="label">Ce qui est inclus</span>
+      <h2 class="titre" style="font-size:clamp(1.8rem,3vw,2.7rem)">Une offre<br/><em>complète</em></h2>
+    </div>
+    <div class="inclus-grid">
+      <div class="inclus-item anim-item"><span class="inclus-bar"></span><h3>Accompagnement personnalisé</h3><p>De la première consultation au jour J, un interlocuteur dédié. Écoute, conseils et suivi à chaque étape.</p></div>
+      <div class="inclus-item anim-item"><span class="inclus-bar"></span><h3>Menus sur mesure</h3><p>Création gastronomique adaptée à vos goûts. Séance de dégustation incluse avant le grand jour.</p></div>
+      <div class="inclus-item anim-item"><span class="inclus-bar"></span><h3>Service raffiné</h3><p>Équipe professionnelle et attentionnée pour que chaque moment soit parfait.</p></div>
+      <div class="inclus-item anim-item"><span class="inclus-bar"></span><h3>Coordination des prestataires</h3><p>Collaboration avec votre wedding planner et votre maître d'hôtel afin que chaque moment se déroule dans une harmonie parfaite.</p></div>
+    </div>
+  </div>
+
+  <div class="process-wrap">
+    <span class="label">Le processus</span>
+    <h2 class="titre" style="font-size:clamp(1.8rem,3vw,2.7rem)">De l'idée à <em>l'assiette</em></h2>
+    <div class="process-steps">
+      <div class="proc-step anim-item"><span class="proc-num">01</span><div class="proc-titre">Échange initial</div><p class="proc-desc">On apprend à vous connaître et découvrons votre vision du grand jour.</p></div>
+      <div class="proc-step anim-item"><span class="proc-num">02</span><div class="proc-titre">Création du menu</div><p class="proc-desc">Nous concevons une proposition culinaire sur mesure selon vos envies.</p></div>
+      <div class="proc-step anim-item"><span class="proc-num">03</span><div class="proc-titre">Dégustation</div><p class="proc-desc">On affine ensemble jusqu'à ce que ce soit exactement parfait.</p></div>
+      <div class="proc-step anim-item"><span class="proc-num">04</span><div class="proc-titre">Le grand jour</div><p class="proc-desc">Notre équipe est là — vous n'avez qu'à vivre et savourer.</p></div>
+    </div>
+  </div>
+
+  <!-- Galerie mariage (images injectées depuis content.js → SITE.galerieMariage) -->
+  <div class="galerie-3" id="galerie-mariage"></div>
+
+  <div class="cta-page">
+    <span class="label" style="color:rgba(201,164,98,.7)">Votre mariage</span>
+    <h2>Parlons de votre<br/><em>histoire</em></h2>
+    <p>Dites-nous ce que vous rêvez, nous créerons votre expérience culinaire dans les moindres détails.</p>
+    <div class="btn-group">
+      <a class="btn-or" href="https://calendly.com/cerclenuances-info/30min" target="_blank" data-calendly>Planifier un échange</a>
+      <button class="btn-vert" onclick="goToContact('mariage')">Demander une soumission</button>
+    </div>
+  </div>
+
+</div><!-- /page-mariage -->
+
+
+<!-- ═══════════════════════════════════════════════════
+     PAGE : MAISON MARTIN
+═══════════════════════════════════════════════════ -->
+<div class="page" id="page-martin">
+
+  <div class="page-hero" style="min-height:520px">
+    <div class="page-hero-bg" style="background-image:url('img/mm-01.jpg')"></div>
+    <div class="page-hero-content">
+      <span class="label">Espace événementiel · Montréal</span>
+      <h1>Maison<br/><em>Martin</em></h1>
+      <div class="divider"></div>
+      <p>Un lieu élégant, cozy et entièrement modulable pour vos événements les plus marquants.</p>
+    </div>
+  </div>
+
+  <div class="intro-2col">
+    <div class="intro-photo-col" style="background-image:url('img/mm-02.jpg')"></div>
+    <div class="intro-text-col">
+      <span class="label">Le lieu</span>
+      <h2 class="titre" style="font-size:clamp(1.8rem,3vw,2.5rem)">Un espace pensé pour<br/><em>chaque vision</em></h2>
+      <div class="divider"></div>
+      <p>Maison Martin est une salle élégante, cozy et entièrement modulable située au cœur de Montréal. Pensée pour accueillir aussi bien des événements privés que corporatifs, elle s'adapte naturellement aux cocktails, mariages intimistes, soupers, ateliers, lancements et réceptions sur mesure.</p>
+      <p>Combinée à l'expertise culinaire de Cercle Nuances, Maison Martin permet de créer une expérience clé en main, harmonieuse et entièrement personnalisée — de l'espace à l'assiette.</p>
+      <div class="btn-wrap">
+        <!-- Lien Matterport (modifiable dans content.js) -->
+        <a class="btn-vert" href="https://my.matterport.com/show/?m=TTwEMpDBSSo" target="_blank" data-matterport style="display:inline-flex;align-items:center;gap:.55rem;">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
+          Visite virtuelle 3D
+        </a>
+        <button class="btn-or" onclick="goToContact()">Réserver le lieu</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="services-wrap">
+    <div class="services-header">
+      <span class="label">Le lieu en détail</span>
+      <h2 class="titre" style="font-size:clamp(1.8rem,3vw,2.7rem)">Capacités &<br/><em>équipements</em></h2>
+      <div class="divider-c"></div>
+    </div>
+    <div class="services-grid">
+      <div class="service-item anim-item"><span class="svc-num">80+</span><h3 class="svc-nom">Formule cocktail</h3><p class="svc-desc">La salle peut accueillir plus de 80 invités en formule cocktail debout, idéale pour les lancements, réceptions et événements réseautage.</p></div>
+      <div class="service-item anim-item"><span class="svc-num">25–30</span><h3 class="svc-nom">Repas assis</h3><p class="svc-desc">Pour des dîners, soupers privés ou réceptions intimes, la salle s'installe confortablement pour 25 à 30 convives dans une atmosphère chaleureuse et raffinée.</p></div>
+      <div class="service-item anim-item"><span class="svc-num">HD</span><h3 class="svc-nom">Rétroprojecteur & écran</h3><p class="svc-desc">Équipée d'un rétroprojecteur et d'un écran de projection pour vos présentations corporatives, lancements ou conférences.</p></div>
+      <div class="service-item anim-item"><span class="svc-num">♪</span><h3 class="svc-nom">Système de son</h3><p class="svc-desc">Un système audio intégré pour accompagner aussi bien une soirée festive qu'une présentation professionnelle.</p></div>
+      <div class="service-item anim-item"><span class="svc-num">∞</span><h3 class="svc-nom">Modulable</h3><p class="svc-desc">La configuration de l'espace s'adapte à chaque événement — cocktail, table d'honneur, ateliers ou installation théâtrale.</p></div>
+      <div class="service-item anim-item"><span class="svc-num">✦</span><h3 class="svc-nom">Clé en main Cercle Nuances</h3><p class="svc-desc">Réservez le lieu et la restauration ensemble. Une seule équipe, une vision cohérente, zéro friction — de l'espace à l'assiette.</p></div>
+    </div>
+  </div>
+
+  <!-- Galerie Maison Martin (images injectées depuis content.js → SITE.galerieMaison) -->
+  <div id="galerie-maison" class="galerie-5"></div>
+
+  <!-- Visite 3D -->
+  <div class="visite3d-wrap">
+    <span class="label">Découverte immersive</span>
+    <h2 class="titre" style="font-size:clamp(1.8rem,3vw,2.7rem);margin-bottom:.6rem">Explorez Maison Martin<br/><em>en visite virtuelle</em></h2>
+    <div class="divider-c"></div>
+    <p>Parcourez l'espace à 360° avant même votre première visite. Imaginez votre événement, ressentez l'atmosphère.</p>
+    <a class="btn-vert" href="https://my.matterport.com/show/?m=TTwEMpDBSSo" target="_blank" data-matterport style="display:inline-flex;align-items:center;gap:.6rem;">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
+      Lancer la visite 3D
+    </a>
+  </div>
+
+  <div class="cta-page">
+    <span class="label" style="color:rgba(201,164,98,.7)">Votre prochain événement</span>
+    <h2>Réservez Maison Martin<br/>avec <em>Cercle Nuances</em></h2>
+    <p>Un lieu, une équipe, une expérience complète. Contactez-nous pour vérifier les disponibilités.</p>
+    <div class="btn-group">
+      <a class="btn-or" href="https://calendly.com/cerclenuances-info/30min" target="_blank" data-calendly>Planifier un échange</a>
+      <button class="btn-vert" onclick="goToContact()">Demander une soumission</button>
+    </div>
+  </div>
+
+</div><!-- /page-martin -->
+
+
+<!-- ═══════════════════════════════════════════════════
+     PAGE : MENUS
+═══════════════════════════════════════════════════ -->
+<div class="page" id="page-menus">
+
+  <div class="page-hero">
+    <div class="page-hero-bg" style="background-image:url('img/menu.jpg')"></div>
+    <div class="page-hero-content">
+      <span class="label">Nos propositions culinaires</span>
+      <h1>Nos<br/><em>Menus</em></h1>
+      <div class="divider"></div>
+      <p>Consultez et téléchargez nos différentes propositions culinaires, pensées pour chaque type d'événement.</p>
+    </div>
+  </div>
+
+  <section id="menus-section">
+    <div class="menus-header">
+      <span class="label" style="color:var(--or)">Télécharger</span>
+      <h2 class="titre titre-blanc" style="font-size:clamp(1.8rem,3vw,2.8rem)">Choisissez votre<br/><em>proposition</em></h2>
+      <div class="divider-c"></div>
+      <p>Cliquez sur un menu pour le consulter directement en PDF.</p>
+    </div>
+    <!-- Cartes injectées depuis content.js → SITE.menus -->
+    <div class="menus-grid" id="menus-grid"></div>
+  </section>
+
+  <div class="cta-page">
+    <span class="label" style="color:rgba(201,164,98,.7)">Votre projet</span>
+    <h2>Une question sur<br/><em>nos formules ?</em></h2>
+    <p>Contactez-nous pour obtenir une soumission personnalisée.</p>
+    <button class="btn-or" onclick="goToContact()">Demander une soumission</button>
+  </div>
+
+</div><!-- /page-menus -->
+
+
+<!-- ═══════════════════════════════════════════════════
+     LIGHTBOX
+═══════════════════════════════════════════════════ -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+  <button class="lightbox-close" onclick="closeLb()">×</button>
+  <button class="lb-prev" onclick="lbNav(-1)">‹</button>
+  <img class="lightbox-img" id="lb-img" src="" alt="Cercle Nuances"/>
+  <button class="lb-next" onclick="lbNav(1)">›</button>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════════════════ -->
+<footer>
+  <img class="footer-logo" src="img/logo.png" alt="Cercle Nuances"/>
+  <div class="footer-menus">
+    <span class="footer-menu-title">Menus</span>
+    <!-- Liens injectés depuis content.js → SITE.menus -->
+    <div id="footer-menus-links"></div>
+  </div>
+  <div class="footer-r">
+    <!-- Lien Instagram injecté depuis content.js → SITE.liens.instagram -->
+    <a class="footer-insta" id="footer-insta" href="https://www.instagram.com/cercle_nuances/" target="_blank">@cercle_nuances</a>
+    <span class="footer-copy">© 2025 Cercle Nuances · Tous droits réservés · Montréal</span>
+  </div>
+</footer>
+
+
+<!-- ═══════════════════════════════════════════════════
+     SCRIPTS
+     Ordre important : content.js avant app.js
+═══════════════════════════════════════════════════ -->
+<script src="js/content.js"></script>
+<script src="js/app.js"></script>
+
+</body>
+</html>
