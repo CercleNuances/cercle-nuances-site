@@ -650,6 +650,16 @@ fbq('track', 'PageView');
 ═══════════════════════════════════════════════════ -->
 <script src="js/content.js"></script>
 <script src="js/app.js"></script>
-
+<!-- Meta Pixel — Événements de conversion -->
+<script>
+  document.querySelectorAll('[data-calendly]').forEach(function(el) {
+    el.addEventListener('click', function() { fbq('track', 'Contact'); });
+  });
+  var cfForm = document.getElementById('cf-form');
+  if (cfForm) {
+    cfForm.addEventListener('submit', function() { fbq('track', 'Lead'); });
+  }
+</script>
+<!-- Fin Meta Pixel — Événements de conversion -->
 </body>
 </html>
