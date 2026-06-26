@@ -341,15 +341,44 @@ nav {
 .contact-top h2 em { font-style: italic; color: var(--vert-mid); }
 .contact-top p { color: var(--gris); font-size: .8rem; line-height: 1.85; }
 
-/* ── Typeform embed ── */
+/* ── Typeform embed (iframe) ── */
 .typeform-wrap {
-  max-width: 860px;
-  margin: 0 auto 2.5rem;
+  max-width: 900px;
+  margin: 0 auto 3rem;
   padding: 0 1.5rem;
-}
-.typeform-wrap > div {
   width: 100%;
-  min-height: 540px;
+}
+.typeform-wrap iframe {
+  display: block;
+  width: 100%;
+  min-height: 800px;
+  border: none;
+  border-radius: 8px;
+  opacity: 0;
+  transition: opacity .4s ease;
+}
+.typeform-wrap iframe.loaded {
+  opacity: 1;
+}
+
+/* ── Option Calendly (secondaire) ── */
+.contact-calendly-alt {
+  text-align: center;
+  padding: 0 2rem 2.5rem;
+}
+.contact-calendly-alt p {
+  font-size: .8rem;
+  color: var(--gris);
+  margin-bottom: 1rem;
+}
+.btn-or--outline {
+  background: transparent !important;
+  border: 1.5px solid var(--or) !important;
+  color: var(--or) !important;
+}
+.btn-or--outline:hover {
+  background: var(--or) !important;
+  color: var(--blanc) !important;
 }
 
 /* ── Contact de secours ── */
@@ -557,8 +586,8 @@ footer {
   .offres-grid, .menus-grid, .services-grid,
   .intro-2col, .why-inner, .inclus-grid { grid-template-columns: 1fr; }
 
-  .typeform-wrap { padding: 0 1rem; }
-  .typeform-wrap > div { min-height: 600px; }
+  .typeform-wrap { padding: 0 0.5rem; }
+  .typeform-wrap iframe { min-height: 700px; height: 700px; border-radius: 0; }
   .gal-grid { grid-template-columns: 1fr 1fr; grid-auto-rows: 200px; }
   .reels-grid { grid-template-columns: 1fr; max-width: 360px; margin: 0 auto; }
   .page-hero-content { padding: 4rem 2rem 3rem; }

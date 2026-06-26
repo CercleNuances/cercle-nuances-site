@@ -248,12 +248,25 @@ function lbNav(dir) {
 }
 
 /* ══════════════════════════════════════════════════════
-   FORMULAIRE DE CONTACT — Typeform
-   Le formulaire est géré directement par Typeform.
-   Aucune logique d'envoi n'est nécessaire ici.
+   FORMULAIRE DE CONTACT — Typeform (iframe)
 ══════════════════════════════════════════════════════ */
 function initContact() {
-  // Typeform gère tout — rien à initialiser
+  const iframe = document.getElementById('typeform-iframe');
+  if (!iframe) return;
+
+  // Afficher l'iframe dès qu'il est chargé
+  iframe.addEventListener('load', () => {
+    iframe.classList.add('loaded');
+  });
+
+  // Timeout de sécurité : si l'iframe ne charge pas en 8s, afficher le bouton de secours
+  setTimeout(() => {
+    if (!iframe.classList.contains('loaded')) {
+      const fallback = document.getElementById('tf-fallback');
+      if (fallback) fallback.style.display = 'block';
+      iframe.style.display = 'none';
+    }
+  }, 8000);
 }
 
 /* ══════════════════════════════════════════════════════
