@@ -335,8 +335,8 @@ nav {
 /* ══════════════════════════════════════════════════════
    CONTACT / SOUMISSION
 ══════════════════════════════════════════════════════ */
-#contact-moderne { background: var(--creme); padding: 8rem 3rem; }
-.contact-top { text-align: center; max-width: 600px; margin: 0 auto 4rem; }
+#contact-moderne { background: var(--creme); padding: 6rem 3rem 4rem; }
+.contact-top { text-align: center; max-width: 600px; margin: 0 auto 2rem; }
 .contact-top h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.2rem,4vw,3.8rem); font-weight: 300; color: var(--texte); line-height: 1.05; margin-bottom: 1rem; }
 .contact-top h2 em { font-style: italic; color: var(--vert-mid); }
 .contact-top p { color: var(--gris); font-size: .8rem; line-height: 1.85; }
