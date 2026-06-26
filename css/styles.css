@@ -336,60 +336,40 @@ nav {
    CONTACT / SOUMISSION
 ══════════════════════════════════════════════════════ */
 #contact-moderne { background: var(--creme); padding: 8rem 3rem; }
-.contact-top { text-align: center; max-width: 600px; margin: 0 auto 5rem; }
+.contact-top { text-align: center; max-width: 600px; margin: 0 auto 4rem; }
 .contact-top h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.2rem,4vw,3.8rem); font-weight: 300; color: var(--texte); line-height: 1.05; margin-bottom: 1rem; }
 .contact-top h2 em { font-style: italic; color: var(--vert-mid); }
 .contact-top p { color: var(--gris); font-size: .8rem; line-height: 1.85; }
-.type-selector { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; max-width: 820px; margin: 0 auto 4rem; }
-.type-card {
-  cursor: pointer; border: 1px solid rgba(27,67,50,.12); background: var(--blanc);
-  padding: 2.5rem 2rem; text-align: center; transition: all .25s;
-  position: relative; overflow: hidden;
+
+/* ── Typeform embed ── */
+.typeform-wrap {
+  max-width: 860px;
+  margin: 0 auto 2.5rem;
+  padding: 0 1.5rem;
 }
-.type-card::after {
-  content: ''; position: absolute; bottom: 0; left: 0; right: 0;
-  height: 2px; background: var(--or); transform: scaleX(0); transition: transform .3s ease;
+.typeform-wrap > div {
+  width: 100%;
+  min-height: 540px;
 }
-.type-card:hover::after, .type-card.selected::after { transform: scaleX(1); }
-.type-card:hover, .type-card.selected { border-color: rgba(201,164,98,.45); background: rgba(201,164,98,.04); }
-.type-card.selected .type-icon svg { stroke: var(--or); }
-.type-card.selected .type-nom { color: var(--vert); }
-.type-icon { margin-bottom: 1rem; }
-.type-icon svg { width: 28px; height: 28px; stroke: rgba(27,67,50,.35); transition: stroke .25s; }
-.type-num { font-family: 'Cormorant Garamond', serif; font-size: 3rem; color: rgba(201,164,98,.12); font-style: italic; position: absolute; top: .8rem; right: 1.2rem; line-height: 1; }
-.type-nom { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 300; color: var(--texte); display: block; margin-bottom: .3rem; transition: color .25s; }
-.type-sous { font-size: .6rem; letter-spacing: .12em; text-transform: uppercase; color: var(--gris); }
-.contact-form-wrap { max-width: 820px; margin: 0 auto; }
-.contact-form-inner { background: var(--blanc); padding: 4rem 4.5rem; border-top: 2px solid var(--or); display: none; }
-.contact-form-inner.visible { display: block; animation: fadeUp .4s ease; }
-.cf-title { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 300; color: var(--vert); margin-bottom: 2rem; }
-.cf-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; margin-bottom: 1.2rem; }
-.cf-full { margin-bottom: 1.2rem; }
-.cf-field { display: flex; flex-direction: column; gap: .3rem; }
-.cf-field label { font-size: .57rem; letter-spacing: .22em; text-transform: uppercase; color: rgba(27,67,50,.55); font-weight: 500; }
-.cf-field input,
-.cf-field select,
-.cf-field textarea {
-  border: none; border-bottom: 1px solid rgba(27,67,50,.18);
-  background: transparent; padding: .65rem 0; font-family: 'Montserrat', sans-serif;
-  font-size: .82rem; color: var(--texte); outline: none; transition: border-color .2s; appearance: none;
+
+/* ── Contact de secours ── */
+.contact-fallback {
+  text-align: center;
+  padding: 0 2rem 2rem;
+  font-size: .78rem;
+  color: var(--gris);
+  line-height: 1.8;
 }
-.cf-field input:focus, .cf-field select:focus, .cf-field textarea:focus { border-bottom-color: var(--or); }
-.cf-field input::placeholder, .cf-field textarea::placeholder { color: rgba(27,67,50,.28); }
-.cf-field textarea { resize: none; min-height: 90px; }
-.cf-field select {
-  cursor: pointer;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23C9A462' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
-  background-repeat: no-repeat; background-position: right 0 center; padding-right: 1.5rem;
+.contact-fallback a {
+  color: var(--vert-mid);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(45,82,68,.25);
+  transition: color .2s, border-color .2s;
 }
-.cf-footer { display: flex; align-items: center; justify-content: space-between; margin-top: 2.5rem; flex-wrap: wrap; gap: 1.5rem; }
-.cf-privacy { font-size: .65rem; color: rgba(27,67,50,.4); max-width: 320px; line-height: 1.6; }
-.cf-success { display: none; text-align: center; padding: 4rem 2rem; }
-.cf-success.show { display: block; animation: fadeUp .4s ease; }
-.cf-success-icon { width: 52px; height: 52px; border-radius: 50%; background: rgba(201,164,98,.1); display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; }
-.cf-success-icon svg { stroke: var(--or); }
-.cf-success h3 { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 300; color: var(--vert); margin-bottom: .7rem; }
-.cf-success p { font-size: .78rem; color: var(--gris); line-height: 1.85; }
+.contact-fallback a:hover {
+  color: var(--or);
+  border-color: var(--or);
+}
 
 /* ══════════════════════════════════════════════════════
    HERO GÉNÉRIQUE (pages internes)
@@ -575,11 +555,10 @@ footer {
   .nav-burger { display: flex; }
 
   .offres-grid, .menus-grid, .services-grid,
-  .intro-2col, .why-inner, .inclus-grid,
-  .type-selector { grid-template-columns: 1fr; }
+  .intro-2col, .why-inner, .inclus-grid { grid-template-columns: 1fr; }
 
-  .cf-grid-2 { grid-template-columns: 1fr; }
-  .contact-form-inner { padding: 2.8rem 2rem; }
+  .typeform-wrap { padding: 0 1rem; }
+  .typeform-wrap > div { min-height: 600px; }
   .gal-grid { grid-template-columns: 1fr 1fr; grid-auto-rows: 200px; }
   .reels-grid { grid-template-columns: 1fr; max-width: 360px; margin: 0 auto; }
   .page-hero-content { padding: 4rem 2rem 3rem; }

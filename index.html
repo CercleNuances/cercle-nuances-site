@@ -213,15 +213,15 @@ fbq('track', 'PageView');
     </div>
   </section>
 
-  <!-- CONTACT / SOUMISSION -->
+  <!-- CONTACT / SOUMISSION — Typeform -->
   <section id="contact-moderne">
+
     <div class="contact-top">
       <span class="label">Votre projet</span>
-      <h2>Parlons de votre<br/><em>prochain événement</em></h2>
+      <h2>Demande de<br/><em>soumission</em></h2>
       <div class="divider-c"></div>
-      <p>Dites-nous ce que vous préparez, nous vous revenons sous 24h avec une proposition sur mesure.</p>
+      <p>Parlez-nous de votre vision. Nous préparerons une proposition sur mesure, pensée pour faire de votre événement un moment inoubliable.</p>
       <div style="margin-top:1.8rem">
-        <!-- Lien Calendly (modifiable dans content.js) -->
         <a class="btn-or" href="https://calendly.com/cerclenuances-info/30min" target="_blank" data-calendly style="display:inline-flex;align-items:center;gap:.6rem;">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
           Planifier un échange personnalisé
@@ -229,77 +229,21 @@ fbq('track', 'PageView');
       </div>
     </div>
 
-    <!-- Sélecteur de type d'événement -->
-    <div class="type-selector" id="type-selector">
-      <div class="type-card" onclick="selectType(this,'corpo')" data-contact-type="corpo">
-        <span class="type-num">01</span>
-        <div class="type-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg>
-        </div>
-        <span class="type-nom">Corporatif</span>
-        <span class="type-sous">Gala · Cocktail · Lancement</span>
-      </div>
-      <div class="type-card" onclick="selectType(this,'event')" data-contact-type="event">
-        <span class="type-num">02</span>
-        <div class="type-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V6a2 2 0 012-2z"/></svg>
-        </div>
-        <span class="type-nom">Événement privé</span>
-        <span class="type-sous">Anniversaire · Chef à domicile</span>
-      </div>
-      <div class="type-card" onclick="selectType(this,'mariage')" data-contact-type="mariage">
-        <span class="type-num">03</span>
-        <div class="type-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
-        </div>
-        <span class="type-nom">Mariage</span>
-        <span class="type-sous">Menu sur mesure · Dégustation</span>
-      </div>
+    <!-- Formulaire Typeform — pour changer le formulaire, modifiez l'ID dans data-tf-live -->
+    <div class="typeform-wrap">
+      <div data-tf-live="nRHybWVZ"></div>
     </div>
 
-    <!-- Formulaire -->
-    <div class="contact-form-wrap">
-      <div class="contact-form-inner" id="contact-form-inner">
-        <div class="cf-title" id="cf-title">Parlez-nous de votre projet</div>
-
-        <!-- Message succès -->
-        <div class="cf-success" id="cf-success">
-          <div class="cf-success-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-          </div>
-          <h3>Message envoyé !</h3>
-          <p>Merci pour votre intérêt. Notre équipe vous contactera dans les 24 heures pour discuter de votre projet.</p>
-        </div>
-
-        <form id="cf-form" onsubmit="submitCF(event)">
-          <div class="cf-grid-2">
-            <div class="cf-field"><label>Prénom</label><input type="text" placeholder="Marie" required/></div>
-            <div class="cf-field"><label>Nom</label><input type="text" placeholder="Dupont" required/></div>
-          </div>
-          <div class="cf-grid-2">
-            <div class="cf-field"><label>Courriel</label><input type="email" placeholder="marie@email.com" required/></div>
-            <div class="cf-field"><label>Téléphone</label><input type="tel" placeholder="+1 514 000-0000"/></div>
-          </div>
-          <div class="cf-grid-2">
-            <div class="cf-field"><label>Date de l'événement</label><input type="date" required/></div>
-            <div class="cf-field"><label>Nombre de convives</label><input type="number" placeholder="50" min="1" required/></div>
-          </div>
-          <!-- Champ spécifique au type (injecté par app.js selon le choix) -->
-          <div class="cf-full" id="cf-extra"></div>
-          <div class="cf-full">
-            <div class="cf-field">
-              <label>Votre message (optionnel)</label>
-              <textarea placeholder="Décrivez votre vision, vos envies ou toute contrainte particulière…"></textarea>
-            </div>
-          </div>
-          <div class="cf-footer">
-            <span class="cf-privacy">Vos informations sont confidentielles et ne seront utilisées qu'à des fins de contact.</span>
-            <button type="submit" class="btn-vert">Envoyer la demande &nbsp;→</button>
-          </div>
-        </form>
-      </div>
+    <!-- Contact de secours -->
+    <div class="contact-fallback">
+      Vous pouvez aussi nous écrire directement à
+      <a href="mailto:info@cerclenuances.ca">info@cerclenuances.ca</a>
     </div>
+
   </section>
+
+  <!-- Script Typeform (chargé une seule fois, en bas de page) -->
+  <script src="//embed.typeform.com/next/embed.js"></script>
 
 </div><!-- /page-accueil -->
 

@@ -8,6 +8,11 @@
 
 const SITE = {
 
+  // ── Formulaire de contact (Typeform) ─────────────────
+  // Pour changer le formulaire : remplacez l'ID dans index.html
+  // Section : <!-- Formulaire Typeform --> → data-tf-live="VOTRE_ID"
+  typeformId: 'nRHybWVZ',
+
   // ── Liens externes ──────────────────────────────────
   liens: {
     calendly:    'https://calendly.com/cerclenuances-info/30min',
@@ -75,7 +80,7 @@ const SITE = {
   galerieMariage: [
     'img/nuance-036 copie.jpg',
     'img/nuance-098 copie.jpg',
-    'img/nuance-052 copie.jpg',
+    'img/nuance-052.jpg',
   ],
 
   // ── Galerie Maison Martin (page Maison Martin) ──────

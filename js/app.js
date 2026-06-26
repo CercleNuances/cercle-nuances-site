@@ -248,68 +248,12 @@ function lbNav(dir) {
 }
 
 /* ══════════════════════════════════════════════════════
-   FORMULAIRE DE CONTACT
+   FORMULAIRE DE CONTACT — Typeform
+   Le formulaire est géré directement par Typeform.
+   Aucune logique d'envoi n'est nécessaire ici.
 ══════════════════════════════════════════════════════ */
-const extraFields = {
-  corpo: `<div class="cf-field">
-    <label>Type de prestation</label>
-    <select>
-      <option value="">Sélectionnez…</option>
-      <option>Cocktail dînatoire</option>
-      <option>Gala d'entreprise</option>
-      <option>Lancement de produit</option>
-      <option>Petit-déjeuner d'affaires</option>
-      <option>Team building culinaire</option>
-      <option>Autre</option>
-    </select>
-  </div>`,
-  event: `<div class="cf-field">
-    <label>Type de célébration</label>
-    <select>
-      <option value="">Sélectionnez…</option>
-      <option>Anniversaire</option>
-      <option>Chef à domicile</option>
-      <option>Réception familiale</option>
-      <option>Dîner d'exception</option>
-      <option>Brunch festif</option>
-      <option>Autre</option>
-    </select>
-  </div>`,
-  mariage: `<div class="cf-field">
-    <label>Lieu de réception</label>
-    <input type="text" placeholder="Nom ou type de salle…"/>
-  </div>`,
-};
-
-const titresForm = {
-  corpo:   'Votre événement corporatif',
-  event:   'Votre événement privé',
-  mariage: 'Votre mariage',
-};
-
 function initContact() {
-  // Rendre selectType global pour les onclick HTML
-  window.selectType = selectType;
-  window.submitCF   = submitCF;
-}
-
-function selectType(card, type) {
-  document.querySelectorAll('.type-card').forEach(c => c.classList.remove('selected'));
-  card.classList.add('selected');
-
-  const inner = document.getElementById('contact-form-inner');
-  inner.classList.add('visible');
-  document.getElementById('cf-title').textContent = titresForm[type] || 'Votre projet';
-  document.getElementById('cf-extra').innerHTML = extraFields[type] || '';
-  document.getElementById('cf-success').classList.remove('show');
-  document.getElementById('cf-form').style.display = 'block';
-  inner.scrollIntoView({ behavior: 'smooth', block: 'start' });
-}
-
-function submitCF(e) {
-  e.preventDefault();
-  document.getElementById('cf-form').style.display = 'none';
-  document.getElementById('cf-success').classList.add('show');
+  // Typeform gère tout — rien à initialiser
 }
 
 /* ══════════════════════════════════════════════════════
