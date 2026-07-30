@@ -620,6 +620,17 @@ fbq('track', 'PageView');
   if (cfForm) {
     cfForm.addEventListener('submit', function() { fbq('track', 'Lead'); });
   }
+
+      // Tracking soumission formulaire Typeform → Meta Pixel
+      window.addEventListener('message', function(event) {
+              if (event.origin !== 'https://form.typeform.com') return;
+              try {
+                        var data = typeof event.data === 'string' ? JSON.parse(event.data) : event.data;
+                        if (data && data.type === 'form-submit') {
+                                    fbq('track', 'Lead');
+                        }
+              } catch(e) {}
+      });
 </script>
 <!-- Fin Meta Pixel — Événements de conversion -->
 </body>
