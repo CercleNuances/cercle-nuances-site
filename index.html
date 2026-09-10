@@ -26,7 +26,6 @@ fbq('track', 'PageView');
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="https://embed.typeform.com/next/css/widget.css"/>
 
   <!-- Styles -->
   <link rel="stylesheet" href="css/styles.css"/>
@@ -226,22 +225,15 @@ fbq('track', 'PageView');
 
     <!-- Formulaire Typeform — SDK officiel avec suivi fiable des soumissions -->
     <div class="typeform-wrap">
-      <div
+      <iframe
         id="typeform-widget"
-        data-tf-widget="nRHybWVZ"
-        data-tf-on-ready="onTypeformReady"
-        data-tf-on-submit="onTypeformSubmit"
-        data-tf-transitive-search-params="utm_source,utm_medium,utm_campaign,utm_content,utm_term,fbclid"
-        style="width:100%; min-height:800px; height:800px;"
-        aria-label="Formulaire de soumission Cercle Nuances"
-      ></div>
-      <!-- Bouton de secours si l'iframe ne charge pas -->
-      <div id="tf-fallback" style="display:none; text-align:center; padding:2rem;">
-        <a class="btn-or" href="https://form.typeform.com/to/nRHybWVZ" target="_blank" style="display:inline-flex;align-items:center;gap:.6rem;">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-          Ouvrir le formulaire de soumission
-        </a>
-      </div>
+        src="https://form.typeform.com/to/nRHybWVZ?typeform-medium=embed-snippet"
+        title="Formulaire de soumission Cercle Nuances"
+        style="width:100%; min-height:800px; height:800px; border:0;"
+        allow="camera; microphone; autoplay; encrypted-media;"
+        loading="eager"
+        onload="this.classList.add('loaded')"
+      ></iframe>
     </div>
 
     <!-- Option secondaire : Calendly -->
@@ -613,7 +605,9 @@ fbq('track', 'PageView');
 <!-- Meta Pixel — Événements de conversion -->
 <script>
   document.querySelectorAll('[data-calendly]').forEach(function(el) {
-    el.addEventListener('click', function() { fbq('track', 'Contact'); });
+    el.addEventListener('click', function() {
+      if (typeof fbq === 'function') fbq('track', 'Contact');
+    });
   });
 
   function getLeadCategory() {
@@ -628,23 +622,38 @@ fbq('track', 'PageView');
     return 'general';
   }
 
-  window.onTypeformReady = function() {
-    document.getElementById('typeform-widget')?.classList.add('loaded');
-  };
+  (function configureTypeform() {
+    var iframe = document.getElementById('typeform-widget');
+    if (!iframe) return;
 
-  // Le callback officiel Typeform ne se déclenche qu'après une soumission réussie.
-  window.onTypeformSubmit = function(payload) {
-    if (!payload || !payload.responseId || typeof fbq !== 'function') return;
+    var iframeUrl = new URL(iframe.src);
+    var pageParams = new URLSearchParams(window.location.search);
+    ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'fbclid'].forEach(function(key) {
+      var value = pageParams.get(key);
+      if (value) iframeUrl.searchParams.set(key, value);
+    });
+    iframe.src = iframeUrl.toString();
+  })();
 
-    var eventId = 'typeform_' + payload.responseId;
-    var storageKey = 'cn_meta_lead_' + payload.responseId;
+  window.addEventListener('message', function(event) {
+    if (!event.origin || !event.origin.endsWith('.typeform.com')) return;
+
+    var message = event.data;
+    if (typeof message === 'string') {
+      try { message = JSON.parse(message); } catch (error) { return; }
+    }
+    if (!message || message.type !== 'form-submit' || typeof fbq !== 'function') return;
+
+    var responseId = message.responseId || (message.payload && message.payload.responseId) || '';
+    var storageKey = responseId ? 'cn_meta_lead_' + responseId : 'cn_meta_lead_submitted';
     if (sessionStorage.getItem(storageKey)) return;
 
     var search = new URLSearchParams(window.location.search);
+    var eventId = responseId ? 'typeform_' + responseId : 'typeform_' + Date.now();
     fbq('track', 'Lead', {
       content_name: 'Demande de soumission Typeform',
       content_category: getLeadCategory(),
-      form_id: payload.formId || 'nRHybWVZ',
+      form_id: 'nRHybWVZ',
       utm_source: search.get('utm_source') || '',
       utm_medium: search.get('utm_medium') || '',
       utm_campaign: search.get('utm_campaign') || '',
@@ -654,9 +663,8 @@ fbq('track', 'PageView');
     });
 
     sessionStorage.setItem(storageKey, '1');
-  };
+  });
 </script>
-<script src="https://embed.typeform.com/next/embed.js"></script>
 <!-- Fin Meta Pixel — Événements de conversion -->
 </body>
 </html>
