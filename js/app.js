@@ -167,6 +167,7 @@ function showPage(id) {
 
 // Raccourci pour aller au formulaire de contact depuis n'importe où
 function goToContact(type) {
+  if (type) sessionStorage.setItem('cn_lead_type', type);
   showPage('accueil');
   setTimeout(() => {
     document.getElementById('contact-moderne')?.scrollIntoView({ behavior: 'smooth' });
@@ -251,20 +252,15 @@ function lbNav(dir) {
    FORMULAIRE DE CONTACT — Typeform (iframe)
 ══════════════════════════════════════════════════════ */
 function initContact() {
-  const iframe = document.getElementById('typeform-iframe');
-  if (!iframe) return;
+  const widget = document.getElementById('typeform-widget');
+  if (!widget) return;
 
-  // Afficher l'iframe dès qu'il est chargé
-  iframe.addEventListener('load', () => {
-    iframe.classList.add('loaded');
-  });
-
-  // Timeout de sécurité : si l'iframe ne charge pas en 8s, afficher le bouton de secours
+  // Timeout de sécurité : si le SDK Typeform ne charge pas en 8s,
+  // afficher le lien direct vers le formulaire.
   setTimeout(() => {
-    if (!iframe.classList.contains('loaded')) {
+    if (!widget.classList.contains('loaded')) {
       const fallback = document.getElementById('tf-fallback');
       if (fallback) fallback.style.display = 'block';
-      iframe.style.display = 'none';
     }
   }, 8000);
 }
