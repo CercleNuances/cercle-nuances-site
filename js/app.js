@@ -1,31 +1,23 @@
 /**
  * ═══════════════════════════════════════════════════════
  *  CERCLE NUANCES — Logique de l'application
- *  Navigation, galerie, lightbox, formulaire.
- *  Ne pas modifier sauf si vous voulez changer le comportement.
  * ═══════════════════════════════════════════════════════
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-
-  // ── Injection du contenu depuis content.js ──────────
   injectContent();
-
-  // ── Initialisation ───────────────────────────────────
   initNav();
   initGalerie();
   initLightbox();
   initContact();
   initScrollAnimations();
-
 });
 
 /* ══════════════════════════════════════════════════════
-   INJECTION DU CONTENU (depuis content.js)
+   INJECTION DU CONTENU
 ══════════════════════════════════════════════════════ */
 function injectContent() {
 
-  // Stats (strip chiffres)
   const strip = document.getElementById('strip');
   if (strip && SITE.stats) {
     strip.innerHTML = SITE.stats.map((s, i) =>
@@ -36,13 +28,11 @@ function injectContent() {
     ).join('');
   }
 
-  // Témoignage
   const temo = document.getElementById('temoignage-texte');
   const temoAuteur = document.getElementById('temoignage-auteur');
   if (temo && SITE.temoignage) temo.textContent = SITE.temoignage.texte;
   if (temoAuteur && SITE.temoignage) temoAuteur.textContent = SITE.temoignage.auteur;
 
-  // Galerie principale
   const galGrid = document.getElementById('galerie-grid');
   if (galGrid && SITE.galerie) {
     galGrid.innerHTML = SITE.galerie.map(src =>
@@ -52,7 +42,6 @@ function injectContent() {
     ).join('');
   }
 
-  // Galerie Mariage
   const galMariage = document.getElementById('galerie-mariage');
   if (galMariage && SITE.galerieMariage) {
     galMariage.innerHTML = SITE.galerieMariage.map(src =>
@@ -60,16 +49,6 @@ function injectContent() {
     ).join('');
   }
 
-  // Galerie Maison Martin
-  const galMaison = document.getElementById('galerie-maison');
-  if (galMaison && SITE.galerieMaison) {
-    galMaison.innerHTML = SITE.galerieMaison.map(src =>
-      `<div class="gal3-item" style="background-image:url('${src}')"></div>`
-    ).join('');
-    galMaison.className = 'galerie-5';
-  }
-
-  // Reels Instagram
   const reelsGrid = document.getElementById('reels-grid');
   if (reelsGrid && SITE.reels) {
     reelsGrid.innerHTML = SITE.reels.map(url =>
@@ -79,23 +58,19 @@ function injectContent() {
     ).join('');
   }
 
-  // Lien Instagram
   document.querySelectorAll('[data-instagram]').forEach(el => {
     if (SITE.liens?.instagram) el.href = SITE.liens.instagram;
     if (SITE.liens?.instagramHandle) el.querySelector?.('.handle-text') && (el.querySelector('.handle-text').textContent = SITE.liens.instagramHandle);
   });
 
-  // Liens Calendly
   document.querySelectorAll('[data-calendly]').forEach(el => {
     if (SITE.liens?.calendly) el.href = SITE.liens.calendly;
   });
 
-  // Liens Matterport
   document.querySelectorAll('[data-matterport]').forEach(el => {
     if (SITE.liens?.matterport) el.href = SITE.liens.matterport;
   });
 
-  // Menus PDF
   const menusGrid = document.getElementById('menus-grid');
   if (menusGrid && SITE.menus) {
     menusGrid.innerHTML = SITE.menus.map(m => {
@@ -120,7 +95,6 @@ function injectContent() {
     }).join('');
   }
 
-  // Footer : liens menus
   const footerMenus = document.getElementById('footer-menus-links');
   if (footerMenus && SITE.menus) {
     footerMenus.innerHTML = SITE.menus
@@ -129,7 +103,6 @@ function injectContent() {
       .join('');
   }
 
-  // Footer : lien Instagram
   const footerInsta = document.getElementById('footer-insta');
   if (footerInsta && SITE.liens) {
     footerInsta.href = SITE.liens.instagram;
@@ -140,42 +113,28 @@ function injectContent() {
 /* ══════════════════════════════════════════════════════
    NAVIGATION
 ══════════════════════════════════════════════════════ */
-const PAGES = ['accueil', 'corpo', 'event', 'mariage', 'martin', 'menus'];
+const PAGES = ['accueil', 'corpo', 'event', 'mariage', 'menus'];
 
 function showPage(id) {
-  // Masquer toutes les pages
   PAGES.forEach(p => {
     document.getElementById('page-' + p)?.classList.remove('active');
     document.getElementById('nl-' + p)?.classList.remove('active');
     document.getElementById('mnl-' + p)?.classList.remove('active');
   });
 
-  // Afficher la page demandée
   document.getElementById('page-' + id)?.classList.add('active');
   document.getElementById('nl-' + id)?.classList.add('active');
   document.getElementById('mnl-' + id)?.classList.add('active');
 
-  // Scroll en haut
   window.scrollTo({ top: 0, behavior: 'smooth' });
-
-  // Fermer le menu mobile
   closeMobileMenu();
-
-  // Ré-observer les animations (pour les nouvelles pages)
   setTimeout(initScrollAnimations, 100);
 }
 
-// Raccourci pour aller au formulaire de contact depuis n'importe où
 function goToContact(type) {
-  if (type) sessionStorage.setItem('cn_lead_type', type);
   showPage('accueil');
   setTimeout(() => {
     document.getElementById('contact-moderne')?.scrollIntoView({ behavior: 'smooth' });
-    if (type) {
-      // Sélectionner le bon type dans le formulaire
-      const card = document.querySelector(`[data-contact-type="${type}"]`);
-      if (card) selectType(card, type);
-    }
   }, 320);
 }
 
@@ -188,7 +147,6 @@ function initNav() {
     mobileMenu.classList.toggle('open');
   });
 
-  // Fermer le menu si on clique en dehors
   document.addEventListener('click', e => {
     if (!burger?.contains(e.target) && !mobileMenu?.contains(e.target)) {
       closeMobileMenu();
@@ -208,7 +166,6 @@ let lbItems = [];
 let lbCurrent = 0;
 
 function initGalerie() {
-  // Ré-initialiser après injection du contenu
   lbItems = Array.from(document.querySelectorAll('.gal-item'));
   lbItems.forEach((el, i) => {
     el.addEventListener('click', () => openLightbox(i));
@@ -249,18 +206,21 @@ function lbNav(dir) {
 }
 
 /* ══════════════════════════════════════════════════════
-   FORMULAIRE DE CONTACT — Typeform (iframe)
+   FORMULAIRE DE CONTACT — Typeform
 ══════════════════════════════════════════════════════ */
 function initContact() {
-  const widget = document.getElementById('typeform-widget');
-  if (!widget) return;
+  const iframe = document.getElementById('typeform-iframe');
+  if (!iframe) return;
 
-  // Timeout de sécurité : si le SDK Typeform ne charge pas en 8s,
-  // afficher le lien direct vers le formulaire.
+  iframe.addEventListener('load', () => {
+    iframe.classList.add('loaded');
+  });
+
   setTimeout(() => {
-    if (!widget.classList.contains('loaded')) {
+    if (!iframe.classList.contains('loaded')) {
       const fallback = document.getElementById('tf-fallback');
       if (fallback) fallback.style.display = 'block';
+      iframe.style.display = 'none';
     }
   }, 8000);
 }
@@ -271,22 +231,17 @@ function initContact() {
 function initScrollAnimations() {
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('visible');
-      }
+      if (e.isIntersecting) e.target.classList.add('visible');
     });
   }, { threshold: 0.1 });
 
   document.querySelectorAll('.anim-item').forEach(el => {
-    if (!el.classList.contains('visible')) {
-      observer.observe(el);
-    }
+    if (!el.classList.contains('visible')) observer.observe(el);
   });
 }
 
-// Rendre showPage et goToContact globaux (utilisés dans les onclick HTML)
-window.showPage    = showPage;
-window.goToContact = goToContact;
-window.closeLb     = closeLb;
+window.showPage     = showPage;
+window.goToContact  = goToContact;
+window.closeLb      = closeLb;
 window.closeLightbox = closeLightbox;
-window.lbNav       = lbNav;
+window.lbNav        = lbNav;
