@@ -47,9 +47,8 @@ fbq('track', 'PageView');
   <ul class="nav-links">
     <li><a onclick="showPage('accueil')" id="nl-accueil" class="active">Accueil</a></li>
     <li><a onclick="showPage('corpo')"   id="nl-corpo">Événements</a></li>
-    <li><a onclick="showPage('event')"   id="nl-event">Privé</a></li>
+    <li><a onclick="showPage('event')"   id="nl-event">Corporatif</a></li>
     <li><a onclick="showPage('mariage')" id="nl-mariage">Mariage</a></li>
-    <li><a onclick="showPage('martin')"  id="nl-martin">Maison Martin</a></li>
     <li><a onclick="showPage('menus')"   id="nl-menus">Menus</a></li>
   </ul>
 
@@ -66,9 +65,8 @@ fbq('track', 'PageView');
 <div class="nav-mobile" id="nav-mobile">
   <a onclick="showPage('accueil')" id="mnl-accueil" class="active">Accueil</a>
   <a onclick="showPage('corpo')"   id="mnl-corpo">Événements</a>
-  <a onclick="showPage('event')"   id="mnl-event">Privé</a>
+  <a onclick="showPage('event')"   id="mnl-event">Corporatif</a>
   <a onclick="showPage('mariage')" id="mnl-mariage">Mariage</a>
-  <a onclick="showPage('martin')"  id="mnl-martin">Maison Martin</a>
   <a onclick="showPage('menus')"   id="mnl-menus">Menus</a>
   <button class="nav-cta" onclick="goToContact()">Soumission</button>
 </div>
@@ -100,7 +98,6 @@ fbq('track', 'PageView');
   </section>
 
   <!-- CHIFFRES CLÉS -->
-  <!-- Les statistiques sont injectées depuis js/content.js → SITE.stats -->
   <div id="strip"></div>
 
   <!-- NOS OFFRES -->
@@ -163,7 +160,6 @@ fbq('track', 'PageView');
       <div class="divider-c"></div>
       <p>Un aperçu de notre univers culinaire — présentations, dressages et créations du quotidien.</p>
     </div>
-    <!-- Images injectées depuis js/content.js → SITE.galerie -->
     <div class="gal-grid" id="galerie-grid"></div>
   </section>
 
@@ -174,43 +170,20 @@ fbq('track', 'PageView');
       <h2 class="titre" style="font-size:clamp(1.8rem,3vw,2.6rem)">Suivez<br/><em>nos coulisses</em></h2>
       <div class="divider-c"></div>
       <p>Plongez dans notre univers : préparations, dressages et moments de service.</p>
-      <!-- Le lien Instagram est injecté depuis content.js → SITE.liens.instagram -->
       <a class="insta-handle" href="https://www.instagram.com/cercle_nuances/" target="_blank" data-instagram>
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
         <span class="handle-text">@cercle_nuances</span>
       </a>
     </div>
-    <!-- Reels injectés depuis js/content.js → SITE.reels -->
     <div class="reels-grid" id="reels-grid"></div>
   </section>
 
   <!-- TÉMOIGNAGE -->
   <section id="temoignage">
     <span class="temo-quote">"</span>
-    <!-- Texte injecté depuis content.js → SITE.temoignage -->
     <blockquote id="temoignage-texte"></blockquote>
     <div class="divider-c" style="background:rgba(201,164,98,.28)"></div>
     <cite id="temoignage-auteur"></cite>
-  </section>
-
-  <!-- MAISON MARTIN TEASER -->
-  <section id="mm-teaser">
-    <div class="mm-teaser-bg"></div>
-    <div class="mm-teaser-overlay"></div>
-    <div class="mm-teaser-content">
-      <span class="label" style="color:var(--or)">Espace événementiel · Montréal</span>
-      <h2>Maison<br/><em>Martin</em></h2>
-      <div class="divider" style="margin:1rem 0 1.4rem"></div>
-      <p>Un espace élégant, cozy et entièrement modulable au cœur de Montréal, pour vos événements privés, corporatifs, mariages intimistes et lancements. Combiné à l'expertise de Cercle Nuances, une expérience clé en main de l'espace à l'assiette.</p>
-      <button class="btn-or" onclick="showPage('martin')">
-        Découvrir Maison Martin
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-      </button>
-    </div>
-    <div class="mm-teaser-photos">
-      <div class="mm-teaser-photo" style="background-image:url('img/mm-02.jpg')"></div>
-      <div class="mm-teaser-photo" style="background-image:url('img/mm-03.jpg')"></div>
-    </div>
   </section>
 
   <!-- CONTACT / SOUMISSION — Typeform -->
@@ -223,20 +196,26 @@ fbq('track', 'PageView');
       <p>Parlez-nous de votre vision. Nous préparerons une proposition sur mesure, pensée pour faire de votre événement un moment inoubliable.</p>
     </div>
 
-    <!-- Formulaire Typeform — SDK officiel avec suivi fiable des soumissions -->
     <div class="typeform-wrap">
       <iframe
-        id="typeform-widget"
-        src="https://form.typeform.com/to/nRHybWVZ?typeform-medium=embed-snippet"
-        title="Formulaire de soumission Cercle Nuances"
-        style="width:100%; min-height:800px; height:800px; border:0;"
+        id="typeform-iframe"
+        src="https://form.typeform.com/to/nRHybWVZ"
+        width="100%"
+        style="border:none; min-height:800px; height:800px;"
         allow="camera; microphone; autoplay; encrypted-media;"
-        loading="eager"
-        onload="this.classList.add('loaded')"
+        sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-top-navigation-by-user-activation"
+        title="Formulaire de soumission Cercle Nuances"
+        onload="this.style.opacity='1'"
+        onerror="document.getElementById('tf-fallback').style.display='block'; this.style.display='none';"
       ></iframe>
+      <div id="tf-fallback" style="display:none; text-align:center; padding:2rem;">
+        <a class="btn-or" href="https://form.typeform.com/to/nRHybWVZ" target="_blank" style="display:inline-flex;align-items:center;gap:.6rem;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          Ouvrir le formulaire de soumission
+        </a>
+      </div>
     </div>
 
-    <!-- Option secondaire : Calendly -->
     <div class="contact-calendly-alt">
       <p>Vous préférez discuter de vive voix ?</p>
       <a class="btn-or btn-or--outline" href="https://calendly.com/cerclenuances-info/30min" target="_blank" data-calendly style="display:inline-flex;align-items:center;gap:.6rem;">
@@ -245,7 +224,6 @@ fbq('track', 'PageView');
       </a>
     </div>
 
-    <!-- Contact de secours -->
     <div class="contact-fallback">
       Vous pouvez aussi nous écrire directement à
       <a href="mailto:info@cerclenuances.ca">info@cerclenuances.ca</a>
@@ -279,7 +257,7 @@ fbq('track', 'PageView');
       <p>Cercle Nuances conçoit des expériences culinaires pensées pour les entreprises qui souhaitent marquer les esprits. Du cocktail dînatoire au gala annuel, chaque prestation est orchestrée avec rigueur et élégance.</p>
       <p>Nous gérons la conception des menus, la logistique, le service et les finitions esthétiques — vous n'avez qu'à recevoir.</p>
       <div class="btn-wrap">
-        <a class="btn-vert" href="menus/Menu_Ete_2026.pdf" target="_blank">↓ Télécharger notre menu</a>
+        <a class="btn-vert" href="menus/Menu_Hivernal_Evenements_2026.pdf" target="_blank">↓ Télécharger notre menu</a>
         <button class="btn-or" onclick="goToContact('corpo')">Demander une soumission</button>
       </div>
     </div>
@@ -329,55 +307,72 @@ fbq('track', 'PageView');
 
 
 <!-- ═══════════════════════════════════════════════════
-     PAGE : ÉVÉNEMENTS PRIVÉS
+     PAGE : CORPORATIF
 ═══════════════════════════════════════════════════ -->
 <div class="page" id="page-event">
 
   <div class="page-hero">
-    <div class="page-hero-bg" style="background-image:url('img/event-intro.jpg')"></div>
+    <div class="page-hero-bg" style="background-image:url('img/corpo-buffet.png')"></div>
     <div class="page-hero-content">
-      <h1>Événements<br/><em>Privés</em></h1>
+      <h1>Traiteur<br/><em>Corporatif</em></h1>
       <div class="divider"></div>
-      <p>Anniversaires, fêtes en famille, célébrations entre amis — des tablées généreuses orchestrées avec soin.</p>
+      <p>Buffets, lunchs d'équipe, réunions et réceptions — une restauration raffinée livrée directement en entreprise.</p>
     </div>
   </div>
 
   <div class="intro-2col">
     <div class="intro-text-col">
       <span class="label">Notre approche</span>
-      <h2 class="titre" style="font-size:clamp(1.8rem,3vw,2.5rem)">Une table qui<br/><em>rassemble</em></h2>
+      <h2 class="titre" style="font-size:clamp(1.8rem,3vw,2.5rem)">Bien manger au bureau,<br/><em>sans compromis</em></h2>
       <div class="divider"></div>
-      <p>Chaque événement mérite une attention particulière. Cercle Nuances met son savoir-faire au service de vos réceptions, dans le lieu de votre choix.</p>
-      <p>De la cuisine au service, tout est pensé pour vous offrir une expérience fluide, élégante et sans contrainte.</p>
+      <p>Cercle Nuances accompagne les entreprises au quotidien comme lors de leurs événements les plus importants. Qu'il s'agisse d'un lunch de travail, d'une formation ou d'une réception corporative, nous apportons la même rigueur, la même qualité et la même élégance.</p>
+      <p>Livraison directement en entreprise, mise en place soignée, formules adaptées à chaque équipe et chaque budget — vous n'avez qu'à accueillir.</p>
       <div class="btn-wrap">
-        <a class="btn-vert" href="menus/Menu_Evenements_2026.pdf" target="_blank">↓ Télécharger notre menu</a>
-        <button class="btn-or" onclick="goToContact('event')">Planifier votre événement</button>
+        <a class="btn-vert" href="menus/Menu_Hivernal_Evenements_2026.pdf" target="_blank">↓ Télécharger notre menu</a>
+        <button class="btn-or" onclick="goToContact('event')">Demander une soumission</button>
       </div>
     </div>
-    <div class="intro-photo-col" style="background-image:url('img/nuance-073 copie.jpg')"></div>
+    <div class="intro-photo-col" style="background-image:url('img/corpo-intro.png')"></div>
   </div>
 
   <div class="services-wrap">
     <div class="services-header">
-      <span class="label">Nos prestations</span>
-      <h2 class="titre" style="font-size:clamp(1.8rem,3vw,2.7rem)">Pour chaque<br/><em>célébration</em></h2>
+      <span class="label">Nos formules</span>
+      <h2 class="titre" style="font-size:clamp(1.8rem,3vw,2.7rem)">Une solution pour<br/><em>chaque besoin</em></h2>
       <div class="divider-c"></div>
     </div>
     <div class="services-grid">
-      <div class="service-item anim-item"><span class="svc-num">01</span><h3 class="svc-nom">Brunch & déjeuner festif</h3><p class="svc-desc">Produits frais travaillés avec soin pour des célébrations tout en légèreté.</p></div>
-      <div class="service-item anim-item"><span class="svc-num">02</span><h3 class="svc-nom">Chef à domicile</h3><p class="svc-desc">Votre chef personnel cuisine chez vous, de l'entrée au dessert. Menu co-conçu selon vos envies.</p></div>
-      <div class="service-item anim-item"><span class="svc-num">03</span><h3 class="svc-nom">Anniversaire & célébration</h3><p class="svc-desc">Service complet à table et ambiance festive. Un moment inoubliable pour célébrer ceux que vous aimez.</p></div>
-      <div class="service-item anim-item"><span class="svc-num">04</span><h3 class="svc-nom">Réception familiale</h3><p class="svc-desc">Buffet élégant ou service assis, adapté à tous les âges.</p></div>
-      <div class="service-item anim-item"><span class="svc-num">05</span><h3 class="svc-nom">Dîner d'exception</h3><p class="svc-desc">Soirée gastronomique intime pour 4 à 20 personnes. Expérience signature Cercle Nuances.</p></div>
-      <div class="service-item anim-item"><span class="svc-num">06</span><h3 class="svc-nom">Clé en main</h3><p class="svc-desc">Menu, service, dressage — nous gérons tout pour que vous ne pensiez à rien le jour J.</p></div>
+      <div class="service-item anim-item"><span class="svc-num">01</span><h3 class="svc-nom">Buffet froid</h3><p class="svc-desc">Plateaux de charcuteries, fromages, crudités, sandwichs gastronomiques et verrines. Élégant, facile à servir, idéal pour les équipes.</p></div>
+      <div class="service-item anim-item"><span class="svc-num">02</span><h3 class="svc-nom">Buffet chaud</h3><p class="svc-desc">Plats mijotés, protéines grillées, accompagnements cuisinés — un repas complet, chaud et généreux livré prêt à servir.</p></div>
+      <div class="service-item anim-item"><span class="svc-num">03</span><h3 class="svc-nom">Lunch corporatif</h3><p class="svc-desc">Formules individuelles ou collectives pour vos réunions, formations et journées de travail. Pratique, élégant, sans prise de tête.</p></div>
+      <div class="service-item anim-item"><span class="svc-num">04</span><h3 class="svc-nom">Déjeuners & collations</h3><p class="svc-desc">Brunchs d'affaires, pauses-café gourmandes, viennoiseries et fruits frais. Une attention pour votre équipe, dès le matin.</p></div>
+      <div class="service-item anim-item"><span class="svc-num">05</span><h3 class="svc-nom">Livraison en entreprise</h3><p class="svc-desc">Livraison ponctuelle ou récurrente à vos bureaux, avec mise en place soignée. Vous commandez, on s'occupe du reste.</p></div>
+      <div class="service-item anim-item"><span class="svc-num">06</span><h3 class="svc-nom">Formule sur mesure</h3><p class="svc-desc">Budget fixe, contraintes alimentaires, grand groupe ou équipe réduite — nous adaptons notre offre à vos besoins spécifiques.</p></div>
+    </div>
+  </div>
+
+  <div class="why-wrap">
+    <div class="why-inner">
+      <div>
+        <span class="label">Pourquoi nous choisir</span>
+        <h2 class="titre" style="font-size:clamp(1.8rem,3vw,2.5rem)">Plus qu'un traiteur,<br/><em>un partenaire</em></h2>
+        <div class="divider"></div>
+        <p style="font-size:.8rem;color:var(--gris);line-height:1.85">Nous ne livrons pas que de la nourriture. Nous apportons une expérience culinaire cohérente avec l'image de votre entreprise — que ce soit pour une réunion de dix personnes ou une réception de cent invités.</p>
+      </div>
+      <ul class="why-list">
+        <li class="why-item"><span class="why-n">01</span><div class="why-t"><strong>Commande simple & rapide</strong><p>Un seul contact, une confirmation rapide. Idéal pour les RH et gestionnaires d'événements.</p></div></li>
+        <li class="why-item"><span class="why-n">02</span><div class="why-t"><strong>Qualité constante</strong><p>Produits frais, préparations maison, présentation soignée — à chaque commande, sans exception.</p></div></li>
+        <li class="why-item"><span class="why-n">03</span><div class="why-t"><strong>Flexibilité totale</strong><p>Commandes ponctuelles ou régulières, petits et grands groupes, budgets variés.</p></div></li>
+        <li class="why-item"><span class="why-n">04</span><div class="why-t"><strong>Livraison clé en main</strong><p>Arrivée à l'heure, installation incluse. Vous vous concentrez sur votre journée, on gère le reste.</p></div></li>
+      </ul>
     </div>
   </div>
 
   <div class="cta-page">
-    <span class="label" style="color:rgba(201,164,98,.7)">Votre célébration</span>
-    <h2>Créons ensemble<br/><em>votre moment</em></h2>
-    <p>Parlez-nous de votre projet, nous vous proposons une expérience à votre image.</p>
-    <button class="btn-or" onclick="goToContact('event')">Planifier votre événement</button>
+    <span class="label" style="color:rgba(201,164,98,.7)">Votre prochaine commande</span>
+    <h2>Nourrissez votre équipe<br/><em>avec élégance</em></h2>
+    <p>Contactez-nous pour discuter de vos besoins et recevoir une soumission adaptée à votre entreprise.</p>
+    <button class="btn-or" onclick="goToContact('event')">Demander une soumission</button>
   </div>
 
 </div><!-- /page-event -->
@@ -407,7 +402,6 @@ fbq('track', 'PageView');
       <p>Choix des menus, accords des saveurs, coordination avec vos prestataires et service le jour J.</p>
       <div class="btn-wrap">
         <button class="btn-vert" onclick="goToContact('mariage')">Demander une soumission</button>
-        <!-- Lien Calendly (modifiable dans content.js) -->
         <a class="btn-or" href="https://calendly.com/cerclenuances-info/30min" target="_blank" data-calendly>Planifier un échange</a>
       </div>
     </div>
@@ -437,7 +431,6 @@ fbq('track', 'PageView');
     </div>
   </div>
 
-  <!-- Galerie mariage (images injectées depuis content.js → SITE.galerieMariage) -->
   <div class="galerie-3" id="galerie-mariage"></div>
 
   <div class="cta-page">
@@ -451,84 +444,6 @@ fbq('track', 'PageView');
   </div>
 
 </div><!-- /page-mariage -->
-
-
-<!-- ═══════════════════════════════════════════════════
-     PAGE : MAISON MARTIN
-═══════════════════════════════════════════════════ -->
-<div class="page" id="page-martin">
-
-  <div class="page-hero" style="min-height:520px">
-    <div class="page-hero-bg" style="background-image:url('img/mm-01.jpg')"></div>
-    <div class="page-hero-content">
-      <span class="label">Espace événementiel · Montréal</span>
-      <h1>Maison<br/><em>Martin</em></h1>
-      <div class="divider"></div>
-      <p>Un lieu élégant, cozy et entièrement modulable pour vos événements les plus marquants.</p>
-    </div>
-  </div>
-
-  <div class="intro-2col">
-    <div class="intro-photo-col" style="background-image:url('img/mm-02.jpg')"></div>
-    <div class="intro-text-col">
-      <span class="label">Le lieu</span>
-      <h2 class="titre" style="font-size:clamp(1.8rem,3vw,2.5rem)">Un espace pensé pour<br/><em>chaque vision</em></h2>
-      <div class="divider"></div>
-      <p>Maison Martin est une salle élégante, cozy et entièrement modulable située au cœur de Montréal. Pensée pour accueillir aussi bien des événements privés que corporatifs, elle s'adapte naturellement aux cocktails, mariages intimistes, soupers, ateliers, lancements et réceptions sur mesure.</p>
-      <p>Combinée à l'expertise culinaire de Cercle Nuances, Maison Martin permet de créer une expérience clé en main, harmonieuse et entièrement personnalisée — de l'espace à l'assiette.</p>
-      <div class="btn-wrap">
-        <!-- Lien Matterport (modifiable dans content.js) -->
-        <a class="btn-vert" href="https://my.matterport.com/show/?m=TTwEMpDBSSo" target="_blank" data-matterport style="display:inline-flex;align-items:center;gap:.55rem;">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
-          Visite virtuelle 3D
-        </a>
-        <button class="btn-or" onclick="goToContact()">Réserver le lieu</button>
-      </div>
-    </div>
-  </div>
-
-  <div class="services-wrap">
-    <div class="services-header">
-      <span class="label">Le lieu en détail</span>
-      <h2 class="titre" style="font-size:clamp(1.8rem,3vw,2.7rem)">Capacités &<br/><em>équipements</em></h2>
-      <div class="divider-c"></div>
-    </div>
-    <div class="services-grid">
-      <div class="service-item anim-item"><span class="svc-num">80+</span><h3 class="svc-nom">Formule cocktail</h3><p class="svc-desc">La salle peut accueillir plus de 80 invités en formule cocktail debout, idéale pour les lancements, réceptions et événements réseautage.</p></div>
-      <div class="service-item anim-item"><span class="svc-num">25–30</span><h3 class="svc-nom">Repas assis</h3><p class="svc-desc">Pour des dîners, soupers privés ou réceptions intimes, la salle s'installe confortablement pour 25 à 30 convives dans une atmosphère chaleureuse et raffinée.</p></div>
-      <div class="service-item anim-item"><span class="svc-num">HD</span><h3 class="svc-nom">Rétroprojecteur & écran</h3><p class="svc-desc">Équipée d'un rétroprojecteur et d'un écran de projection pour vos présentations corporatives, lancements ou conférences.</p></div>
-      <div class="service-item anim-item"><span class="svc-num">♪</span><h3 class="svc-nom">Système de son</h3><p class="svc-desc">Un système audio intégré pour accompagner aussi bien une soirée festive qu'une présentation professionnelle.</p></div>
-      <div class="service-item anim-item"><span class="svc-num">∞</span><h3 class="svc-nom">Modulable</h3><p class="svc-desc">La configuration de l'espace s'adapte à chaque événement — cocktail, table d'honneur, ateliers ou installation théâtrale.</p></div>
-      <div class="service-item anim-item"><span class="svc-num">✦</span><h3 class="svc-nom">Clé en main Cercle Nuances</h3><p class="svc-desc">Réservez le lieu et la restauration ensemble. Une seule équipe, une vision cohérente, zéro friction — de l'espace à l'assiette.</p></div>
-    </div>
-  </div>
-
-  <!-- Galerie Maison Martin (images injectées depuis content.js → SITE.galerieMaison) -->
-  <div id="galerie-maison" class="galerie-5"></div>
-
-  <!-- Visite 3D -->
-  <div class="visite3d-wrap">
-    <span class="label">Découverte immersive</span>
-    <h2 class="titre" style="font-size:clamp(1.8rem,3vw,2.7rem);margin-bottom:.6rem">Explorez Maison Martin<br/><em>en visite virtuelle</em></h2>
-    <div class="divider-c"></div>
-    <p>Parcourez l'espace à 360° avant même votre première visite. Imaginez votre événement, ressentez l'atmosphère.</p>
-    <a class="btn-vert" href="https://my.matterport.com/show/?m=TTwEMpDBSSo" target="_blank" data-matterport style="display:inline-flex;align-items:center;gap:.6rem;">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
-      Lancer la visite 3D
-    </a>
-  </div>
-
-  <div class="cta-page">
-    <span class="label" style="color:rgba(201,164,98,.7)">Votre prochain événement</span>
-    <h2>Réservez Maison Martin<br/>avec <em>Cercle Nuances</em></h2>
-    <p>Un lieu, une équipe, une expérience complète. Contactez-nous pour vérifier les disponibilités.</p>
-    <div class="btn-group">
-      <a class="btn-or" href="https://calendly.com/cerclenuances-info/30min" target="_blank" data-calendly>Planifier un échange</a>
-      <button class="btn-vert" onclick="goToContact()">Demander une soumission</button>
-    </div>
-  </div>
-
-</div><!-- /page-martin -->
 
 
 <!-- ═══════════════════════════════════════════════════
@@ -553,7 +468,6 @@ fbq('track', 'PageView');
       <div class="divider-c"></div>
       <p>Cliquez sur un menu pour le consulter directement en PDF.</p>
     </div>
-    <!-- Cartes injectées depuis content.js → SITE.menus -->
     <div class="menus-grid" id="menus-grid"></div>
   </section>
 
@@ -585,86 +499,26 @@ fbq('track', 'PageView');
   <img class="footer-logo" src="img/logo.png" alt="Cercle Nuances"/>
   <div class="footer-menus">
     <span class="footer-menu-title">Menus</span>
-    <!-- Liens injectés depuis content.js → SITE.menus -->
     <div id="footer-menus-links"></div>
   </div>
   <div class="footer-r">
-    <!-- Lien Instagram injecté depuis content.js → SITE.liens.instagram -->
     <a class="footer-insta" id="footer-insta" href="https://www.instagram.com/cercle_nuances/" target="_blank">@cercle_nuances</a>
     <span class="footer-copy">© 2025 Cercle Nuances · Tous droits réservés · Montréal</span>
   </div>
 </footer>
 
 
-<!-- ═══════════════════════════════════════════════════
-     SCRIPTS
-     Ordre important : content.js avant app.js
-═══════════════════════════════════════════════════ -->
+<!-- SCRIPTS -->
 <script src="js/content.js"></script>
 <script src="js/app.js"></script>
-<!-- Meta Pixel — Événements de conversion -->
 <script>
   document.querySelectorAll('[data-calendly]').forEach(function(el) {
-    el.addEventListener('click', function() {
-      if (typeof fbq === 'function') fbq('track', 'Contact');
-    });
+    el.addEventListener('click', function() { fbq('track', 'Contact'); });
   });
-
-  function getLeadCategory() {
-    var savedType = sessionStorage.getItem('cn_lead_type');
-    if (savedType === 'corpo') return 'corporatif';
-    if (savedType === 'mariage') return 'mariage';
-    if (savedType === 'event') return 'prive';
-
-    var campaign = (new URLSearchParams(window.location.search).get('utm_campaign') || '').toLowerCase();
-    if (campaign.indexOf('mariage') !== -1 || campaign.indexOf('wedding') !== -1) return 'mariage';
-    if (campaign.indexOf('corpo') !== -1 || campaign.indexOf('corporatif') !== -1) return 'corporatif';
-    return 'general';
+  var cfForm = document.getElementById('cf-form');
+  if (cfForm) {
+    cfForm.addEventListener('submit', function() { fbq('track', 'Lead'); });
   }
-
-  (function configureTypeform() {
-    var iframe = document.getElementById('typeform-widget');
-    if (!iframe) return;
-
-    var iframeUrl = new URL(iframe.src);
-    var pageParams = new URLSearchParams(window.location.search);
-    ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'fbclid'].forEach(function(key) {
-      var value = pageParams.get(key);
-      if (value) iframeUrl.searchParams.set(key, value);
-    });
-    iframe.src = iframeUrl.toString();
-  })();
-
-  window.addEventListener('message', function(event) {
-    if (!event.origin || !event.origin.endsWith('.typeform.com')) return;
-
-    var message = event.data;
-    if (typeof message === 'string') {
-      try { message = JSON.parse(message); } catch (error) { return; }
-    }
-    if (!message || message.type !== 'form-submit' || typeof fbq !== 'function') return;
-
-    var responseId = message.responseId || (message.payload && message.payload.responseId) || '';
-    var storageKey = responseId ? 'cn_meta_lead_' + responseId : 'cn_meta_lead_submitted';
-    if (sessionStorage.getItem(storageKey)) return;
-
-    var search = new URLSearchParams(window.location.search);
-    var eventId = responseId ? 'typeform_' + responseId : 'typeform_' + Date.now();
-    fbq('track', 'Lead', {
-      content_name: 'Demande de soumission Typeform',
-      content_category: getLeadCategory(),
-      form_id: 'nRHybWVZ',
-      utm_source: search.get('utm_source') || '',
-      utm_medium: search.get('utm_medium') || '',
-      utm_campaign: search.get('utm_campaign') || '',
-      utm_content: search.get('utm_content') || ''
-    }, {
-      eventID: eventId
-    });
-
-    sessionStorage.setItem(storageKey, '1');
-  });
 </script>
-<!-- Fin Meta Pixel — Événements de conversion -->
 </body>
 </html>
