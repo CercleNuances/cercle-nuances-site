@@ -24,9 +24,9 @@ const SITE = {
   menus: [
     {
       type:    'Entreprises',
-      nom:     'Menu Corporatif',
+      nom:     'Menu Corporatif Hiver 2026',
       desc:    'Cocktails dînatoires, galas, lancements et événements d\'entreprise sur mesure.',
-      fichier: 'menus/Menu_Hivernal_Evenements_2026.pdf',
+      fichier: 'menus/Menu_Corporatif_Hiver_2026.pdf',
     },
     {
       type:    'Événements privés',
